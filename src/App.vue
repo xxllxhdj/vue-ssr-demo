@@ -36,6 +36,6 @@
 
 <style lang="scss">
     html {
-        overflow-y: auto;
+        overflow-y: hidden!important;
     }
 </style>
