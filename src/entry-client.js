@@ -8,8 +8,8 @@ Vue.mixin({
         const { asyncData } = this.$options;
         if (asyncData) {
             asyncData({
-            store: this.$store,
-            route: to
+                store: this.$store,
+                route: to
             })
             .then(next)
             .catch(next);
@@ -44,12 +44,12 @@ router.onReady(() => {
         const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _);
         if (!asyncDataHooks.length) {
             return next();
-    }
-    Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
-        .then(() => {
-        next();
-        })
-        .catch(next);
+        }
+        Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
+            .then(() => {
+                next();
+            })
+            .catch(next);
     });
 
     // actually mount to DOM
